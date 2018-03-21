@@ -1,0 +1,17 @@
+@startuml
+/'starts at 1'/
+autonumber
+Bob -> Alice : Authentication Request
+Bob <- Alice : Authentication Response
+
+/'starts at 15'/
+autonumber 15
+Bob -> Alice : Another authentication Request
+Bob <- Alice : Another authentication Response
+
+/'starts at 40 with a step of 10'/
+autonumber 40 10
+Bob -> Alice : Yet another authentication Request
+Bob <- Alice : Yet another authentication Response
+
+@enduml

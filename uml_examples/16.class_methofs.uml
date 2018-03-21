@@ -1,0 +1,10 @@
+@startuml
+/'Defining relations'/
+Object <|-- ArrayList
+
+/'Defining methods'/
+Object : equals()
+ArrayList : Object[] elementData
+ArrayList : size()
+
+@enduml

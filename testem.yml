@@ -1,0 +1,7 @@
+launchers:
+  NodeServer:
+    command: "jasmine-node spec/tests"
+launch_in_dev:
+- NodeServer
+watch_files:
+- spec/tests/*

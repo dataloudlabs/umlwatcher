@@ -1,0 +1,21 @@
+{
+  "name": "uml-watcher",
+  "version": "1.0.0",
+  "description": "",
+  "main": "uml-watch.js",
+  "scripts": {
+    "start": "node umlwatch",
+    "test": "testem -f testem.yml -p 7358"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chokidar": "^2.0.2",
+    "commander": "^2.15.1",
+    "extend": "^3.0.1",
+    "node-plantuml": "^0.5.0",
+    "normalize-path": "^2.1.1",
+    "plantuml-encoder": "^1.2.5",
+    "zmq": "^2.15.3"
+  }
+}

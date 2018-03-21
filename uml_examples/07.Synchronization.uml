@@ -1,0 +1,9 @@
+@startuml
+(*) --> ===B1===
+--> "Parallel Activity"
+--> ===B2===
+
+===B1=== --> "Parallel Activity 2"
+--> ===B2===
+-->(*)
+@enduml

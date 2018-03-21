@@ -1,0 +1,22 @@
+@startuml
+
+class Dummy {
+ -field1
+ #field2
+ ~method1()
+ +method2()
+}
+
+class Dummy2 {
+ -private_field
+ #protected_field
+ ~packagePrivate_field
+ +public_field
+ -private_method()
+ #protected_method()
+ ~packagePrivate_method()
+ +public_method()
+}
+
+
+@enduml

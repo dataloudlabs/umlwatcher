@@ -1,0 +1,14 @@
+@startuml
+
+(*) --> "Initialization"
+
+if "Some Text?" then
+  -->[true] "Some Activity"
+  -->"Another Activity"
+  -right-> (*)
+else
+  -->[false] "Something else"
+  -->[Ending process] (*)
+endif
+
+@enduml

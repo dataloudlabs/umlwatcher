@@ -1,0 +1,26 @@
+@startuml
+
+/'
+  Skinparam reference: 
+  http://plantuml.com/skinparam
+'/
+
+skinparam backgroundColor #dddddd
+skinparam activity {
+  StartColor Tomato
+  BarColor SteelBlue
+  EndColor Tomato
+  BackgroundColor #FF7f00
+  BackgroundColor<< Begin >> LimeGreen
+  BorderColor #FF7f00
+  FontName Impact
+}
+
+(*) --> "Climbs on Platform" << Begin >>
+--> === S1 ===
+--> Bows
+--> === S2 ===
+--> WavesArmes
+--> (*)
+
+@enduml

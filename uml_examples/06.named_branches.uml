@@ -1,0 +1,27 @@
+@startuml
+(*) --> if "Some Test" then
+  -->[true] "Activity 1"
+  if "" then 
+    -right-> "Activity 3" as a3
+  else
+    if "Other test" then
+      -left-> "Activity 5"
+    else
+      --> "Activity 6"
+    endif
+  endif
+else
+->[false] "activity 2"
+endif
+
+
+/'
+  a3 is a branch named above
+'/
+a3 --> if "last test?" then
+  --> "activity 7"
+else
+  -right-> "activity 8"
+endif
+
+@enduml
