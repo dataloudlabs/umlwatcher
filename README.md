@@ -33,8 +33,10 @@ Or just render all of them at once.
 $ node umlwatch.js -w ./uml_examples -r ./result --render-existing 
 ```
 
+The diagrams will be put in the _-r, --result-path_. The script will also **create a _last_render.png_ file with the result of the last rendering** in case you want to debug/inspect as you code along your diagrams.
 
-Other examples...
+
+##### Other examples...
 
 ``` bash
 ## Will re-render all *.uml files currently in ./input.
@@ -64,18 +66,11 @@ $ node umlwatch.js --help
 ```
 
 
-#### Dependencies
-
-``` bash
-npm install chokidar commander extend node-plantuml normalize-path plantuml-encoder 
-```
-
-You can also check [this gist](https://gist.github.com/pjsousa/e76183d4ecce7a356ce923bd7966667a)
-Or [this repo](https://github.com/dataloudlabs/umlwatcher)
 
 
 ## Credit
 
 The uml_examples are mostly taken directly from the [plantuml documentation](http://plantuml.com).
+
 This is mostly an util script making use of [node-plantuml](https://github.com/markushedvall/node-plantuml) and [plantuml-encode](https://github.com/markushedvall/plantuml-encoder).
 
