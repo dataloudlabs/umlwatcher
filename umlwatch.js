@@ -1,5 +1,7 @@
 'use strict;'
 
+
+
 const chokidar = require('chokidar');
 const log = console.log.bind(console);
 const plantuml = require('node-plantuml');
@@ -54,68 +56,86 @@ function parseArgs(raw_argv){
   return result;
 }
 
-function sanitizeWatchPath(watchPath){
+function sanitizePath(path){
   var result;
 
-  if (!fs.existsSync(watchPath)){
-    fs.mkdirSync(watchPath);
+  if (!fs.existsSync(path)){
+    fs.mkdirSync(path);
   }
 
-  result = fs.existsSync(watchPath);
+  result = fs.existsSync(path);
 
+  return result;
+}
+
+function sanitizeWatchPath(watchPath){
+  var result;
+  result = sanitizePath(watchPath)
   return result;
 };
 
 function sanitizeTargetPath(target_path){
   var result;
-  if (!fs.existsSync(target_path)){
-      fs.mkdirSync(target_path);
-  }
-
-  result = fs.existsSync(target_path);
-
-  return result
+  result = sanitizePath(target_path);
+  return result;
 };
 
 function sanitizeWorkPath(work_dir){
+  /*
+    TODO:
+        // create work file to log paths and encoded strings.
+   */
   var result;
-  if (!fs.existsSync(work_dir)){
-      fs.mkdirSync(work_dir);
-  }
-  result = fs.existsSync(work_dir);
+  result = sanitizePath(work_dir);
   return result;
 };
 
 function handleChange(options, changed_file){
+  /*
+    TODO:
+      Refactor into read->encode->render methods.
+      Make it elegantly async.
+   */
   var input_filename = basename(changed_file, ".uml");
   var output_path_png = normalize(options["resultPath"] + "/" + input_filename + ".png");
   var output_path_svg = normalize(options["resultPath"] + "/" + input_filename + ".svg");
 
+  var encoded = encodeUml(changed_file);
   var genPng = plantuml.generate(changed_file);
 
   if (options["png"]){
-    log(changed_file + " -> " + output_path_png);
+    log(changed_file + " -> " + output_path_png + "\n\n Encoded:\n"+encoded+"\n");
     genPng.out.pipe(fs.createWriteStream(output_path_png));
   }
 
   if (options["svg"]){
-    log(changed_file + " -> " + output_path_svg);
+    log(changed_file + " -> " + output_path_svg + "\n\n Encoded:\n"+encoded+"\n");
     var genSvg = plantuml.generate(changed_file, {format: "svg"});
     genSvg.out.pipe(fs.createWriteStream(output_path_svg));
   }
 
   genPng.out.pipe(fs.createWriteStream("last_render.png"));
-
+  
+  return encoded;
 };
 
-function encodeUml(){
+function encodeUml(umlPath, format){
   var result;
-
+  result = fs.readFileSync(umlPath);
+  result = plantumlEncoder.encode(result.toString());
   return result;
 };
 
-function renderUml(){
+function renderUml(umlText){
+  // not being used. here for future reference
   var result;
+  
+  var decode = plantuml.decode(umlText);
+  var gen = plantuml.generate({format: format});
+  
+  decode.out.pipe(gen.in);
+  result = gen.out.toString();
+
   return result;
 };
 
@@ -125,7 +145,7 @@ function registerWatchers(watchPath, fileMask, options){
   const watch_options = {
     ignored: /(^|[\/\\])\../,
     persitent:true,
-    ignoreInitial: options["renderExisting"]
+    ignoreInitial: !options["renderExisting"]
   };
 
   chokidar.watch(mask, watch_options)

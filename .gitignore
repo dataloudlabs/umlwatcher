@@ -1,0 +1,18 @@
+node_modules/
+
+# these are handled by bower
+public/libs
+
+# the database file
+db.sqlite
+
+# MacOS system files
+*.DS_Store
+
+
+# the client secret of the app generated with the Google Cloud Console
+*spreadsheets_clientsecret.json
+
+
+# The configuration file for the Sublime Text SFTP plugin
+sftp-config.json
