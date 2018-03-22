@@ -1,0 +1,43 @@
+@startuml
+
+hide stereotype
+/'Only the zme stereotype will be rendered'/
+show <<zmq>> stereotype
+
+node "Dev Box" {
+  component [World]
+  component [Automator]
+
+  interface ScreenCapture      <<zmq>>
+  interface MouseTracker       <<zmq>>
+  interface KeyboardTracker    <<zmq>>
+  interface KeyboardController <<zmq>>
+  interface MouseController    <<zmq>>
+
+  interface ScreenCapture      <<zmq>>
+  interface MouseTracker       <<zmq>>
+  interface KeyboardTracker    <<zmq>>
+  interface KeyboardController <<zmq>>
+  interface MouseController    <<zmq>>
+
+  interface Log                <<file>>
+  interface Records            <<file>>
+
+  interface "/api"             <<rest>>
+  interface "/schedule"        <<rest>>
+}
+
+skinparam interface {
+    backgroundColor<<file>> SteelBlue
+}
+
+skinparam interface {
+    backgroundColor<<zmq>> Orange
+}
+
+skinparam interface {
+    backgroundColor<<rest>> LimeGreen
+}
+
+
+@enduml
