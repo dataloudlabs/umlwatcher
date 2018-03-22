@@ -70,7 +70,8 @@ $ node umlwatch.js --help
 
 ## Credit
 
-The uml_examples are mostly taken directly from the [plantuml documentation](http://plantuml.com).
+The uml_examples are mostly taken directly from the [plantuml documentation](http://plantuml.com). 
+Some others are dotgraphs taken from the [dot guide](http://www.graphviz.org/pdf/dotguide.pdf) in the [graphviz](https://www.graphviz.org/documentation/) documentation.
 
 This is mostly an util script making use of [node-plantuml](https://github.com/markushedvall/node-plantuml) and [plantuml-encode](https://github.com/markushedvall/plantuml-encoder).
 
