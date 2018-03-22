@@ -75,3 +75,7 @@ Or [this repo](https://github.com/dataloudlabs/umlwatcher)
 
 
 ## Credit
+
+The uml_examples are mostly taken directly from the [plantuml documentation](http://plantuml.com).
+This is mostly an util script making use of [node-plantuml](https://github.com/markushedvall/node-plantuml) and [plantuml-encode](https://github.com/markushedvall/plantuml-encoder).
+
