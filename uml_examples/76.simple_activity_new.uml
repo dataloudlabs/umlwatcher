@@ -1,0 +1,5 @@
+@startuml
+:hello world;
+:This is on 
+several **lines**;
+@enduml

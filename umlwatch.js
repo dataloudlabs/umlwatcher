@@ -1,5 +1,9 @@
 'use strict;'
 
+/*
+You can also check [this gist](https://gist.github.com/pjsousa/e76183d4ecce7a356ce923bd7966667a)
+Or [this repo](https://github.com/dataloudlabs/umlwatcher)
+*/
 
 
 const chokidar = require('chokidar');
